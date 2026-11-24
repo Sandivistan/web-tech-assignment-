@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Register for an event at XYZ University.">
+  <title>Register | Smart Campus Events Portal</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="XYZ University logo" width="48" height="48">
+        <span class="brand-text">
+          <strong>XYZ University</strong>
+          <span>Smart Campus Events Portal</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="register.html" aria-current="page">Register</a></li>
+          <li><a href="about.html">About and Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-title">
+      <div class="container">
+        <h1>Student registration</h1>
+        <p>Fill in the form to book your place at an event.</p>
+      </div>
+    </section>
+
+    <div class="container page-section register-layout">
+      <section aria-labelledby="form-heading" class="panel">
+        <h2 id="form-heading">Registration form</h2>
+        <p>All fields are required except comments.</p>
+        <p id="confirmation" class="confirmation" role="status"></p>
+
+        <!-- novalidate turns off the browser pop-ups so that main.js can show its own messages -->
+        <form id="registration-form" action="register.html" method="get" novalidate>
+          <div class="form-group">
+            <label for="full-name">Full name</label>
+            <input type="text" id="full-name" name="full-name" placeholder="For example: Sam Lee" minlength="3" maxlength="60" autocomplete="name" aria-describedby="full-name-error" required>
+            <p class="error" id="full-name-error"></p>
+          </div>
+          <div class="form-group">
+            <label for="student-id">Student ID</label>
+            <p class="hint" id="student-id-hint">1 letter followed by 8 digits</p>
+            <input type="text" id="student-id" name="student-id" placeholder="S12345678" pattern="[A-Za-z][0-9]{8}" maxlength="9" autocomplete="off" aria-describedby="student-id-hint student-id-error" required>
+            <p class="error" id="student-id-error"></p>
+          </div>
+          <div class="form-group">
+            <label for="email">University email</label>
+            <input type="email" id="email" name="email" placeholder="name@xyz.example" maxlength="80" autocomplete="email" aria-describedby="email-error" required>
+            <p class="error" id="email-error"></p>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <p class="hint" id="phone-hint">10 digits, no spaces</p>
+            <input type="tel" id="phone" name="phone" placeholder="0123456789" pattern="[0-9]{10}" maxlength="10" autocomplete="tel-national" aria-describedby="phone-hint phone-error" required>
+            <p class="error" id="phone-error"></p>
+          </div>
+          <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" aria-describedby="department-error" required>
+              <option value="">Choose a department</option>
+              <option value="Business">Business</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Design and Media">Design and Media</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Health Sciences">Health Sciences</option>
+              <option value="Law">Law</option>
+            </select>
+            <p class="error" id="department-error"></p>
+          </div>
+          <fieldset class="form-group">
+            <legend>Year of study</legend>
+            <div class="choices">
+              <div class="choice">
+                <input type="radio" id="year-1" name="year" value="Year 1" aria-describedby="year-error" required>
+                <label for="year-1">Year 1</label>
+              </div>
+              <div class="choice">
+                <input type="radio" id="year-2" name="year" value="Year 2" aria-describedby="year-error">
+                <label for="year-2">Year 2</label>
+              </div>
+              <div class="choice">
+                <input type="radio" id="year-3" name="year" value="Year 3" aria-describedby="year-error">
+                <label for="year-3">Year 3</label>
+              </div>
+              <div class="choice">
+                <input type="radio" id="year-4" name="year" value="Year 4" aria-describedby="year-error">
+                <label for="year-4">Year 4</label>
+              </div>
+            </div>
+            <p class="error" id="year-error"></p>
+          </fieldset>
+          <div class="form-group">
+            <label for="event">Event</label>
+            <select id="event" name="event" aria-describedby="event-error" required>
+              <option value="">Choose an event</option>
+            </select>
+            <p class="error" id="event-error"></p>
+          </div>
+          <div class="form-group">
+            <label for="comments">Comments (optional)</label>
+            <textarea id="comments" name="comments" rows="4" maxlength="300" placeholder="Access needs, questions or team name"></textarea>
+          </div>
+          <div class="form-group">
+            <div class="choice">
+              <input type="checkbox" id="terms" name="terms" value="agreed" aria-describedby="terms-error" required>
+              <label for="terms">I agree to the <a href="about.html#terms" target="_blank">event terms (opens in a new tab)</a></label>
+            </div>
+            <p class="error" id="terms-error"></p>
+          </div>
+          <div class="form-buttons">
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button button-outline">Reset</button>
+          </div>
+        </form>
+      </section>
+
+        <section aria-labelledby="registrations-heading" class="panel">
+        <h2 id="registrations-heading">My registrations</h2>
+        <p id="no-registrations" class="empty-message">You have no saved registrations yet.</p>
+        <table id="registration-table" hidden>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Event</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody id="registration-rows"></tbody>
+        </table>
+        <button type="button" id="clear-registrations" class="button button-danger" hidden>Clear registrations</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 XYZ University. Smart Campus Events Portal.</p>
+      <ul>
+        <li><a href="about.html#contact">Contact the events office</a></li>
+        <li><a href="about.html#faq">FAQ</a></li>
+        <li><a href="about.html#terms">Event terms</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

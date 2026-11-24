@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find and join events at XYZ University.">
+  <title>Home | Smart Campus Events Portal</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="XYZ University logo" width="48" height="48">
+        <span class="brand-text">
+          <strong>XYZ University</strong>
+          <span>Smart Campus Events Portal</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="about.html">About and Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Smart Campus Events Portal</h1>
+          <p>Welcome to XYZ University's home for campus life. Find workshops, competitions, seminars, cultural evenings and sports, then register in a few minutes.</p>
+          <a class="button button-accent" href="events.html">Browse events</a>
+        </div>
+        <figure class="hero-figure">
+          <img src="images/hero.svg" alt="Drawing of students outside the main university building" width="560" height="400">
+          <figcaption>The Main Building, where many events begin.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="container page-section" aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured events</h2>
+      <div id="featured-events" class="event-grid"></div>
+      <noscript><p>Please turn on JavaScript to see the events.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 XYZ University. Smart Campus Events Portal.</p>
+      <ul>
+        <li><a href="about.html#contact">Contact the events office</a></li>
+        <li><a href="about.html#faq">FAQ</a></li>
+        <li><a href="about.html#terms">Event terms</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

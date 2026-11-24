@@ -1,0 +1,683 @@
+/*
+  style.css
+  The one stylesheet used by every page.
+
+  Parts:
+    1. Colour variables
+    2. Basic elements
+    3. Header, navigation and footer
+    4. Buttons and focus styles
+    5. Hero and page titles
+    6. Event cards
+    7. Search and filter
+    8. Registration page
+    9. Tables
+    10. About page
+*/
+
+/* ---------- 1. Colour variables ---------- */
+:root {
+  --primary: #0f3d3e;
+  --primary-light: #1c6664;
+  --accent: #f4b942;
+  --accent-light: #ffd071;
+  --background: #f3f7f6;
+  --surface: #ffffff;
+  --tint: #dcebe8;
+  --text: #1b2b2b;
+  --text-muted: #4f6362;
+  --border: #c9d8d5;
+  --input-border: #728684;
+  --error: #b3261e;
+  --error-light: #fdf0ef;
+  --success: #14603a;
+  --success-light: #e2f4e9;
+
+  --workshop: #1d5fa8;
+  --competition: #a4510a;
+  --seminar: #6a3fa0;
+  --cultural: #b02a5b;
+  --sports: #1f7a3f;
+
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(15, 61, 62, 0.1);
+  --shadow-hover: 0 10px 24px rgba(15, 61, 62, 0.18);
+}
+
+/* ---------- 2. Basic elements ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 1024px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+a {
+  color: var(--primary-light);
+}
+
+a:hover {
+  color: var(--primary);
+  text-decoration-thickness: 2px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Elements with the hidden attribute must never be displayed. */
+[hidden] {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.page-section {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+/* This link is only visible when a keyboard user moves to it. */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 20;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+/* ---------- 3. Header, navigation and footer ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.brand-text strong {
+  font-size: 1.15rem;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: block;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  background: var(--tint);
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--primary);
+  color: var(--surface);
+}
+
+.site-footer {
+  background: var(--primary);
+  color: var(--tint);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 88px;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+.footer-content ul {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer a {
+  color: var(--surface);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}
+
+/* ---------- 4. Buttons and focus styles ---------- */
+.button {
+  display: inline-block;
+  padding: 11px 24px;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--surface);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  border-color: var(--primary-light);
+  background: var(--primary-light);
+  color: var(--surface);
+}
+
+.button-accent {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.button-accent:hover {
+  border-color: var(--accent-light);
+  background: var(--accent-light);
+  color: var(--primary);
+}
+
+.button-outline {
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.button-outline:hover {
+  border-color: var(--primary);
+  background: var(--tint);
+  color: var(--primary);
+}
+
+.button-danger {
+  margin-top: 20px;
+  border-color: var(--error);
+  background: var(--surface);
+  color: var(--error);
+}
+
+.button-danger:hover {
+  border-color: var(--error);
+  background: var(--error);
+  color: var(--surface);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.hero a:focus-visible,
+.site-footer a:focus-visible {
+  outline-color: var(--surface);
+}
+
+/* ---------- 5. Hero and page titles ---------- */
+.hero {
+  background: var(--primary);
+  color: var(--surface);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  color: var(--surface);
+  font-size: 3.25rem;
+  line-height: 1.1;
+}
+
+.hero-text p {
+  margin-bottom: 28px;
+  font-size: 1.15rem;
+}
+
+.hero-figure img {
+  border-radius: var(--radius);
+}
+
+.hero-figure figcaption {
+  margin-top: 10px;
+  color: var(--tint);
+  font-size: 0.9rem;
+}
+
+.page-title {
+  padding: 40px 0;
+  background: var(--tint);
+}
+
+.page-title h1,
+.page-title p {
+  margin-bottom: 4px;
+}
+
+/* ---------- 6. Event cards ---------- */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.event-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.event-figure img {
+  width: 100%;
+}
+
+.category {
+  width: fit-content;
+  margin: 20px 20px 0;
+  padding: 3px 12px;
+  border-radius: 6px;
+  color: var(--surface);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.category-workshop {
+  background: var(--workshop);
+}
+
+.category-competition {
+  background: var(--competition);
+}
+
+.category-seminar {
+  background: var(--seminar);
+}
+
+.category-cultural {
+  background: var(--cultural);
+}
+
+.category-sports {
+  background: var(--sports);
+}
+
+.event-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 20px 20px;
+}
+
+.event-details {
+  margin: auto 0 20px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+.event-details li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  padding: 2px 0;
+}
+
+.event-details strong {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ---------- 7. Search and filter ---------- */
+.event-tools {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 20px 0;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 400px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-button {
+  padding: 10px 16px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--primary);
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background: var(--tint);
+}
+
+.filter-button[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--surface);
+}
+
+.event-count {
+  color: var(--text-muted);
+}
+
+.empty-message {
+  padding: 28px;
+  border: 1px dashed var(--input-border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ---------- 8. Registration page ---------- */
+.register-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 32px;
+}
+
+.panel {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+label,
+legend {
+  padding: 0;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #667876;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--primary);
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.choices {
+  display: flex;
+  gap: 24px;
+  margin-top: 6px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.choice label {
+  font-weight: 400;
+}
+
+.choice input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.error {
+  margin: 6px 0 0;
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.error:empty,
+.confirmation:empty {
+  display: none;
+}
+
+.has-error input,
+.has-error input:hover,
+.has-error select,
+.has-error select:hover {
+  border-color: var(--error);
+  background: var(--error-light);
+}
+
+.confirmation {
+  padding: 14px 16px;
+  border-left: 5px solid var(--success);
+  border-radius: 6px;
+  background: var(--success-light);
+  color: var(--success);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ---------- 9. Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--tint);
+  color: var(--primary);
+}
+
+#registration-table {
+  font-size: 0.9rem;
+}
+
+#registration-table td {
+  overflow-wrap: anywhere;
+}
+
+/* Keeps each student ID on one line. */
+#registration-table td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* ---------- 10. About page ---------- */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 56px;
+}
+
+details {
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+summary {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+summary:hover {
+  background: var(--tint);
+}
+
+details p {
+  margin: 0;
+  padding: 4px 16px 16px;
+}
